@@ -116,12 +116,16 @@ def get_segment_title(segment):
     """
     Return the title associated with the supplied segment
     """
+    if int(segment) > len(descriptions) or segment < 1:
+        return None
     return descriptions[str(segment)]['title']
 
 def get_segment_description(segment):
     """
     Return the description associated with the supplied segment
     """
+    if int(segment) > len(descriptions) or segment < 1:
+        return None
     return descriptions[str(segment)]['description'] 
 
 
@@ -144,22 +148,4 @@ if __name__ == "__main__":
     print get_segment_title(seg)
     print get_segment_description(seg)
     
-
-    print allocate_segment(True, calculate_segment([1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]) ) # Should return 3
-    print allocate_segment(False, calculate_segment([1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]) ) # Should return 6
-
-    print allocate_segment(True, calculate_segment([2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2]) ) # Should return 3
-    print allocate_segment(False, calculate_segment([2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2]) ) # Should return 6
-
-    print allocate_segment(True, calculate_segment([3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3]) ) # Should return 3
-    print allocate_segment(False, calculate_segment([3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3]) ) # Should return 6
-
-    print allocate_segment(True, calculate_segment([4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4]) ) # Should return 2
-    print allocate_segment(False, calculate_segment([4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4]) ) # Should return 6
-
-    print allocate_segment(True, calculate_segment([5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5]) ) # Should return 2
-    print allocate_segment(False, calculate_segment([5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5]) ) # Should return 6
-
-    print allocate_segment(True, calculate_segment([1,2,3,4,5,4,3,2,1,2,3,4,5,4,3,2,1]) ) # Should return 3
-    print allocate_segment(False, calculate_segment([1,2,3,4,5,4,3,2,1,2,3,4,5,4,3,2,1]) ) # Should return 6
 
