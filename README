@@ -17,3 +17,12 @@ Installation
 >>> segtool.get_segment_title(5)
 'Practical Travellers'
 
+
+Testing
+=======
+
+Add application src to the PYTHONPATH:
+    $ PYTHONPATH=`pwd`/segtool
+
+Run the tests:
+    $ python test/segtool_test.py
