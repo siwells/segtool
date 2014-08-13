@@ -147,5 +147,4 @@ if __name__ == "__main__":
     seg = get_segment(True, [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]) # Should return 3
     print get_segment_title(seg)
     print get_segment_description(seg)
-    
 
