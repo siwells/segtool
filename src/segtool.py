@@ -108,19 +108,19 @@ def calculate_segment(answers):
 
 def get_segment(car, answers):
     """
-
+    Helper function to combine usage of calculate_segment and allocate_segment into a single call
     """
     return allocate_segment(car, calculate_segment(answers) )
 
 def get_segment_title(segment):
     """
-
+    Return the title associated with the supplied segment
     """
     return descriptions[str(segment)]['title']
 
 def get_segment_description(segment):
     """
-
+    Return the description associated with the supplied segment
     """
     return descriptions[str(segment)]['description'] 
 
