@@ -3,3 +3,17 @@ segtool
 
 A utility to calculate segments based upon questionnaire results
 
+
+Installation
+============
+
+# Clone the segtool repository & cd into it
+# Run $ python setup.py sdist
+# Copy the tar.gz file from the /dist directory into your project
+# pip install the tar.gz file
+# You should now be able to use segtool functions, e.g.
+
+>>> from segtool import segtool
+>>> segtool.get_segment_title(5)
+'Practical Travellers'
+
