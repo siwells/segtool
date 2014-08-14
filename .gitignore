@@ -1,7 +1,7 @@
 *.swn
 *.swo
 *.swp
-
+*.DS_Store
 
 
 # Byte-compiled / optimized / DLL files
