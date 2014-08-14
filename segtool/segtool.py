@@ -64,7 +64,7 @@ descriptions = {
 num_segments = len(coefficients)
 num_coefficients = len(coefficients['1'])
 
-def allocate_segment(car, segments):
+def allocate_segment(car=False, segments=None):
     """
     Takes 2 inputs, a boolean value, 'car', and a segments dict, 
     e.g. segments = {'1':0, '2':0, '3':0, '4':0, '5':0, '6':0, '7':0, '8':0}
