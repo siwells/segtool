@@ -61,6 +61,8 @@ descriptions = {
 
     }
 
+num_segments = len(coefficients)
+num_coefficients = len(coefficients['1'])
 
 def allocate_segment(car, segments):
     """
@@ -93,12 +95,15 @@ def calculate_segment(answers):
     Returns a segments dict containing the calculated 
     value for each segment based upon the supplied answers.
     """
-    segments = {'1':0, '2':0, '3':0, '4':0, '5':0, '6':0, '7':0, '8':0}
+    if len(answers) != num_coefficients:
+        raise ValueError("The number of answers must be equal to the number of questions in the questionnaire")
 
-    for segment in range(1,9): # There are 8 segments
+    segments = {'1':0, '2':0, '3':0, '4':0, '5':0, '6':0, '7':0, '8':0}
+    
+    for segment in range(1, num_segments+1):
         segment = str(segment)
 
-        for idx in range(17): # There are answers to 17 questions
+        for idx in range(num_coefficients):
             tmp = answers[idx] * coefficients[segment][idx]
             segments[segment] += tmp
 
@@ -150,6 +155,12 @@ if __name__ == "__main__":
     print "SEGTOOL"
 
     seg = get_segment(True, [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]) # Should return 3
-    print get_segment_title(seg)
-    print get_segment_description(seg)
+    #print get_segment_title(seg)
+    #print get_segment_description(seg)
+
+    try:
+        print calculate_segment([1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]) #GOOD
+        print calculate_segment([1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]) #BAD
+    except ValueError as e:
+        print e
 
