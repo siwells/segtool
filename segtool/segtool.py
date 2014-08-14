@@ -64,7 +64,7 @@ descriptions = {
 num_segments = len(coefficients)
 num_coefficients = len(coefficients['1'])
 
-def allocate_segment(car=False, segments=None):
+def allocate_segment(segments, discriminator=False):
     """
     Takes 2 inputs, a boolean value, 'car', and a segments dict, 
     e.g. segments = {'1':0, '2':0, '3':0, '4':0, '5':0, '6':0, '7':0, '8':0}
@@ -72,11 +72,13 @@ def allocate_segment(car=False, segments=None):
 
     Returns the allocated segment, e.g the maximal value for the segments 
     dict, split on keys 1-5 for car=True and 6-8 for car=False.
-    """   
+    """
+    if len(segments) != num_segments:
+        raise ValueError("The number of segment values supplied must be equal to {} ".format(num_segments))
     segment_allocation = 0
     keys = []
 
-    if car is True:
+    if discriminator is True:
         keys = ['1', '2', '3' ,'4', '5']
     else:
         keys = ['6', '7', '8']
@@ -112,11 +114,11 @@ def calculate_segment(answers):
     return segments
 
 
-def get_segment(car, answers):
+def get_segment(answers, discriminator):
     """
     Helper function to combine usage of calculate_segment and allocate_segment into a single call
     """
-    return allocate_segment(car, calculate_segment(answers) )
+    return allocate_segment(calculate_segment(answers), discriminator )
 
 
 def get_segment_title(segment):
@@ -154,13 +156,12 @@ def key_with_max_val(d):
 if __name__ == "__main__":
     print "SEGTOOL"
 
-    seg = get_segment(True, [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]) # Should return 3
-    #print get_segment_title(seg)
-    #print get_segment_description(seg)
+    seg = get_segment([1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1], True) # Should return 3
+    print get_segment_title(seg)
+    print get_segment_description(seg)
 
-    try:
-        print calculate_segment([1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]) #GOOD
-        print calculate_segment([1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]) #BAD
-    except ValueError as e:
-        print e
+    #print calculate_segment([1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]) #GOOD
+    #print calculate_segment([1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]) #BAD: raises ValueError
+
+    #print allocate_segment({'1':0, '6':0}) # BAD: raises ValueError
 
