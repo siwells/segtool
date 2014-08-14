@@ -106,27 +106,32 @@ def calculate_segment(answers):
     
     return segments
 
+
 def get_segment(car, answers):
     """
     Helper function to combine usage of calculate_segment and allocate_segment into a single call
     """
     return allocate_segment(car, calculate_segment(answers) )
 
+
 def get_segment_title(segment):
     """
     Return the title associated with the supplied segment
     """
-    if int(segment) > len(descriptions) or segment < 1:
+    try:
+        return descriptions[str(segment)]['title']
+    except KeyError:
         return None
-    return descriptions[str(segment)]['title']
+
 
 def get_segment_description(segment):
     """
     Return the description associated with the supplied segment
     """
-    if int(segment) > len(descriptions) or segment < 1:
+    try:
+        return descriptions[str(segment)]['description']
+    except KeyError:
         return None
-    return descriptions[str(segment)]['description'] 
 
 
 def key_with_max_val(d):
