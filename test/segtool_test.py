@@ -43,11 +43,11 @@ class TestHelper(unittest.TestCase):
         expected_false = ['6','6','6','6','6','6','6','7']
 
         for x in range(len(answers)):
-            out = segtool.get_segment(True, answers[x])
+            out = segtool.get_segment(answers[x], True)
             self.assertEqual(out, expected_true[x])
 
         for x in range(len(answers)):
-            out = segtool.get_segment(False, answers[x])
+            out = segtool.get_segment(answers[x], False)
             self.assertEqual(out, expected_false[x])
             
 
@@ -90,11 +90,11 @@ class TestAllocation(unittest.TestCase):
             ]
 
         for x in range(len(segments)):
-            out = segtool.allocate_segment(True, segments[x])
+            out = segtool.allocate_segment(segments[x], True)
             self.assertEqual(out, expected_true[x])
 
         for x in range(len(segments)):
-            out  = segtool.allocate_segment(False, segments[x])
+            out  = segtool.allocate_segment(segments[x], False)
             self.assertEqual(out, expected_false[x])
 
 
