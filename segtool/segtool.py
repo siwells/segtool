@@ -89,7 +89,7 @@ def allocate_segment(car, segments):
 
 def calculate_segment(answers):
     """
-    Takes a list of 17 answers, e.g. [1, 1, 1, 1, ...]. 
+    Takes a list of answers, e.g. [1, 1, 1, 1, ...]. 
     Each element of answers is a value between 1 & 5.
 
     Returns a segments dict containing the calculated 
@@ -98,7 +98,7 @@ def calculate_segment(answers):
     if len(answers) != num_coefficients:
         raise ValueError("The number of answers must be equal to the number of questions in the questionnaire")
 
-    segments = {'1':0, '2':0, '3':0, '4':0, '5':0, '6':0, '7':0, '8':0}
+    segments = {str(k):0 for k in range(1,9)}
     
     for segment in range(1, num_segments+1):
         segment = str(segment)
